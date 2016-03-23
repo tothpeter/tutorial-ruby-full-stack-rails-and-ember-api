@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   # POST /tasks
   def create
     @task = Task.new(task_params)
+    @project.project << (relationships_params[:project] || [])
 
     if @task.save
       render json: @task, status: :created, location: @task
@@ -27,6 +28,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
+      @project.project = relationships_params[:project] if relationships_params[:project]
       render json: @task
     else
       render json: @task.errors, status: :unprocessable_entity
