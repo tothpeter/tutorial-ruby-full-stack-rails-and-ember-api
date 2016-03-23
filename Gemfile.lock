@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: c533d1a7fe202a904af178cd22c54cc14383bab0
+  ref: c533d1a7fe202a904af178cd22c54cc14383bab0
+  specs:
+    active_model_serializers (0.10.0.rc4)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -124,6 +134,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   byebug
   listen (~> 3.0.5)
   puma
