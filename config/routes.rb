@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :contacts
   resources :companies
+  resources :tasks
+  resources :projects
 end

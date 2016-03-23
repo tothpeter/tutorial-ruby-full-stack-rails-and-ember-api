@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  status: 1
+  project: one
+  due_at: 
+
+two:
+  description: MyString
+  status: 1
+  project: two
+  due_at: 
