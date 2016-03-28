@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
-    @project.contacts << (relationships_params[:contacts] || [])
+    @company.contacts << (relationships_params[:contacts] || [])
 
     if @company.save
       render json: @company, status: :created, location: @company
@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   def update
     if @company.update(company_params)
-      @project.contacts = relationships_params[:contacts] if relationships_params[:contacts]
+      @company.contacts = relationships_params[:contacts] if relationships_params[:contacts]
       render json: @company
     else
       render json: { errors: @company.errors }, status: :unprocessable_entity
