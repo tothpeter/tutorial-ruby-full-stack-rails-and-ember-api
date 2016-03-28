@@ -6,4 +6,5 @@ class Offer < ApplicationRecord
   has_many :tasks
 
   validates :name, presence: true
+  has_many :notes, as: :topic
 end
