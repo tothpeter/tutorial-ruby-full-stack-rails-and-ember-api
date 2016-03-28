@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers
   root 'root#index'
 
   resources :contacts

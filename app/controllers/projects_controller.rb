@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.contacts << (relationships_params[:contacts] || [])
     @project.tasks << (relationships_params[:tasks] || [])
+    @project.offers << (relationships_params[:offers] || [])
 
     if @project.save
       render json: @project, status: :created, location: @project
@@ -31,6 +32,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       @project.contacts = relationships_params[:contacts] if relationships_params[:contacts]
       @project.tasks = relationships_params[:tasks] if relationships_params[:tasks]
+      @project.offers = relationships_params[:offers] if relationships_params[:offers]
 
       render json: @project
     else

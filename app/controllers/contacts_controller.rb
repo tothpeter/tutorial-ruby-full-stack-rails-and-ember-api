@@ -16,7 +16,9 @@ class ContactsController < ApplicationController
   # POST /contacts
   def create
     @contact = Contact.new(contact_params)
+    @contact.projects << (relationships_params[:projects] || [])
     @contact.company << (relationships_params[:company] || [])
+    @contact.offers << (relationships_params[:offers] || [])
 
     if @contact.save
       render json: @contact, status: :created, location: @contact
@@ -28,7 +30,9 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   def update
     if @contact.update(contact_params)
+      @contact.projects = relationships_params[:projects] if relationships_params[:projects]
       @contact.company = relationships_params[:company] if relationships_params[:company]
+      @contact.offers = relationships_params[:offers] if relationships_params[:offers]
       render json: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity

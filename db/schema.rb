@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323202638) do
+ActiveRecord::Schema.define(version: 20160328120259) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20160323202638) do
 
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id"
 
+  create_table "contacts_offers", force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "offer_id"
+  end
+
+  add_index "contacts_offers", ["contact_id"], name: "index_contacts_offers_on_contact_id"
+  add_index "contacts_offers", ["offer_id"], name: "index_contacts_offers_on_offer_id"
+
   create_table "contacts_projects", force: :cascade do |t|
     t.integer "contact_id"
     t.integer "project_id"
@@ -50,6 +58,18 @@ ActiveRecord::Schema.define(version: 20160323202638) do
 
   add_index "contacts_projects", ["contact_id"], name: "index_contacts_projects_on_contact_id"
   add_index "contacts_projects", ["project_id"], name: "index_contacts_projects_on_project_id"
+
+  create_table "offers", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.float    "price"
+    t.integer  "status"
+    t.datetime "valid_until"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "offers", ["project_id"], name: "index_offers_on_project_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
